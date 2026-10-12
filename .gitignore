@@ -1,0 +1,109 @@
+# ==============================================================================
+# PowerSight - Git Ignore Configuration
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment & Secret Configuration Files
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.env
+*.local
+secrets.h
+*/secrets.h
+**/secrets.h
+!secrets.example.h
+!*/secrets.example.h
+!**/secrets.example.h
+
+# Private credentials and security keys
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+*.p12
+*.id_rsa
+*.id_ed25519
+
+# Project runtime credentials & dynamically changing sensor logs
+**/server/admin_config.json
+server/admin_config.json
+admin_config.json
+!**/server/admin_config.example.json
+!server/admin_config.example.json
+
+**/server/sensor_data.json
+server/sensor_data.json
+sensor_data.json
+!**/server/sensor_data.example.json
+!server/sensor_data.example.json
+
+# ------------------------------------------------------------------------------
+# 2. Dependencies & Build Artifacts
+# ------------------------------------------------------------------------------
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
+build/
+**/build/
+.next/
+**/.next/
+out/
+.vercel/
+.turbo/
+.cache/
+
+# ------------------------------------------------------------------------------
+# 3. Logs & Diagnostics
+# ------------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# 4. Binary Hardware Drivers, Archives & Temporary Folders
+# ------------------------------------------------------------------------------
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.sys
+*.inf
+*.cat
+CP210x_Driver/
+**/CP210x_Driver/
+CP210x_Installer_Pkg/
+**/CP210x_Installer_Pkg/
+**/New folder/
+New folder/
+clerk-nextjs/
+
+# ------------------------------------------------------------------------------
+# 5. OS & Editor Artifacts
+# ------------------------------------------------------------------------------
+.DS_Store
+__MACOSX/
+**/__MACOSX/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

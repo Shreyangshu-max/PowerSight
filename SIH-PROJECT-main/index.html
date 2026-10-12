@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PowerSight — Energy Command Center & IoT Diagnostics</title>
+    <meta name="description" content="IoT-powered real-time energy monitoring, diagnostic current-signature analysis, and human-in-the-loop accountability platform." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- OneSignal Push Notification SDK -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "%VITE_ONESIGNAL_APP_ID%",
+          allowLocalhostAsSecureOrigin: true,
+          serviceWorkerParam: { scope: "/" },
+          notifyButton: {
+            enable: true,
+          },
+          welcomeNotification: {
+            title: "⚡ PowerSight Connected!",
+            message: "You will now receive real-time spike alerts from PowerSight.",
+          },
+        });
+
+        // Auto-request permission on load
+        const permission = await OneSignal.Notifications.permissionNative;
+        if (permission === 'default') {
+          await OneSignal.Slidedown.promptPush();
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-[#080b11] text-slate-100 antialiased font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
